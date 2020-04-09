@@ -1,6 +1,23 @@
 # What Do You Know?
 
+## Description
+---
+What do you know? Put your general knowledge to the test to see how much you really know.  Answer up to 50 questions on various topics and difficulty levels. 
 
+## Screenshots
+---
+
+## Technology Used
+---
+
+## Getting Started
+---
+Link to app
+
+Link to Trello
+
+## Next Steps
+---
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
