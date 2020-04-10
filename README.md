@@ -1,20 +1,25 @@
 # What Do You Know?
 
 ## Description
----
 What do you know? Put your general knowledge to the test to see how much you really know.  Answer up to 50 questions on various topics and difficulty levels. 
+---
 
 ## Screenshots
 ---
 
 ## Technology Used
+- React
+- Express
+- Node
+- Mongoose
+- API
 ---
 
 ## Getting Started
----
 Link to app
 
-Link to Trello
+[Link to Trello](https://trello.com/b/YQ9poumC/project-4)
+---
 
 ## Next Steps
 ---
