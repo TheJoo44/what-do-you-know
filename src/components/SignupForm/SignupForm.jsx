@@ -27,7 +27,7 @@ class SignupForm extends Component {
       // Let <App> know a user has signed up!
       this.props.handleSignupOrLogin();
       // Successfully signed up - show GamePage
-      this.props.history.push('/');
+      this.props.history.push('/trivia');
     } catch (err) {
       // Invalid user data (probably duplicate email)
       this.props.updateMessage(err.message);
@@ -46,6 +46,11 @@ class SignupForm extends Component {
           <div className="form-group">
             <div className="col-sm-12">
               <input type="text" className="form-control" placeholder="Name" value={this.state.name} name="name" onChange={this.handleChange} />
+            </div>
+          </div>
+          <div className="form-group">
+            <div className="col-sm-12">
+              <input type="text" className="form-control" placeholder="Username" value={this.state.username} name="username" onChange={this.handleChange} />
             </div>
           </div>
           <div className="form-group">
