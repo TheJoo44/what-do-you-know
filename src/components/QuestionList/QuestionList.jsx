@@ -1,56 +1,83 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
+import * as triviaService from '../../utils/triviaService';
 
 
 class QuestionList extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      checked: []
+      checked: {},
+      questions: [],
+      correctAnswers: {}
     }
   }
 
-  state
-
   handleChange = (e) => {
     this.setState({
-      // Using ES2015 Computed Property Names
-      [e.target.name]: e.target.value
-    });
+      checked: {
+        ...this.state.checked,
+        [e.target.name]: e.target.value
+      }
+    })
+  }
+
+  handleSubmit = (e) => {
+    let correct = 0;
+    for (let key in this.state.checked) {
+      console.log(this.state.checked[key])
+      console.log(this.state.correctAnswers[key])
+      if (this.state.checked[key] === this.state.correctAnswers[key]) {
+        correct++
+        console.log("correct:", correct)
+      }
+    }
+    this.props.handleCurrentScore()
+  }
+
+  async componentDidMount() {
+    let result = await this.props.getTrivia();
+    triviaService.shuffleAnswers(result)
+    const correctAnswers = triviaService.correctAnswers(result)
+    this.setState({
+      questions: result.results,
+      correctAnswers
+    })
   }
 
   render() {
-    const questions = this.props.triviaResults.map((question, questionIdx) => {
-      const answers = [...question.incorrect_answers, question.correct_answer]
-      const choices = answers.map((choice, idx) => {
-        return (
-          <p><label>
-            <input type="radio" name={`choices-${questionIdx}`} value={choice} onChange={this.handleChange} />
-            <span>{choice}</span>
-          </label></p>
-        )
-      })
-      return (
-        <div>
-          <h3 dangerouslySetInnerHTML={{ __html: `Category: ${question.category}` }}></h3>
-          <h5 dangerouslySetInnerHTML={{ __html: `Difficulty: ${question.difficulty}` }}></h5>
-          <h3 dangerouslySetInnerHTML={{ __html: `${question.question}` }}></h3>
-          <form>
-            {choices}
-          </form>
-
-          <br />
-          <br />
-        </div >
-      )
-    })
     return (
       <div>
         <h1>Questions</h1>
-        {questions}
+        {this.state.questions ? this.state.questions.map((question, questionIdx) => {
+          const choices = question.answers.map((choice, idx) => {
+            return (
+              <p key={idx}><label>
+                <input type="radio" name={`checked-${questionIdx}`} value={choice} onChange={this.handleChange} className="with-gap" />
+                <span dangerouslySetInnerHTML={{ __html: `${choice}` }}></span>
+              </label></p>
+            )
+          })
+          return (
+            <div key={questionIdx}>
+              <h3 dangerouslySetInnerHTML={{ __html: `Category: ${question.category}` }}></h3>
+              <h5 dangerouslySetInnerHTML={{ __html: `Difficulty: ${question.difficulty}` }}></h5>
+              <h3 dangerouslySetInnerHTML={{ __html: `${question.question}` }}></h3>
+              <form>
+                {choices}
+              </form>
+
+              <br />
+              <br />
+            </div >
+          )
+        })
+          : null}
+        <button type="submit" onClick={this.handleSubmit} className="btn btn-default">Submit Answers</button>
       </div >
     )
-  }
 
+  }
 }
 
 export default QuestionList;

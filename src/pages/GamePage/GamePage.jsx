@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import TriviaSelectionForm from '../../components/TriviaSelectionForm/TriviaSelectionForm'
 import * as triviaAPI from '../../utils/triviaAPI'
 import QuestionList from '../../components/QuestionList/QuestionList'
@@ -28,10 +29,7 @@ class GamePage extends Component {
           // getDifficulty={this.state.difficulty}
           getTrivia={this.props.getTrivia}
         /> */}
-        <QuestionList
-          triviaResults={this.props.triviaResults}
-        />
-        <button onClick={this.handleSubmit} className="btn btn-default">Start Game!</button>
+        <Link to="/questions"><button className="btn btn-default">Start Game!</button></Link>
       </div>
     )
   }

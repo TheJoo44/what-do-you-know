@@ -7,6 +7,7 @@ import SignupPage from '../../pages/SignupPage/SignupPage';
 import LoginPage from '../../pages/LoginPage/LoginPage';
 import AboutPage from '../../pages/AboutPage/AboutPage';
 import GamePage from '../../pages/GamePage/GamePage';
+import QuestionList from '../../components/QuestionList/QuestionList';
 import userService from '../../utils/userService';
 import * as triviaAPI from '../../utils/triviaAPI';
 
@@ -34,12 +35,13 @@ class App extends Component {
     });
   }
 
+  handleCurrentScore = () => {
+    this.props.history.push('/scores')
+  }
+
   getTrivia = async (formData) => {
     const triviaResults = await triviaAPI.getTrivia(formData)
-    console.log(triviaResults)
-    this.setState({
-      triviaResults: triviaResults.results
-    });
+    return (triviaResults)
   }
 
   render() {
@@ -80,6 +82,12 @@ class App extends Component {
             <Route exact path='/about' render={({ history }) => <AboutPage history={history} />}
             />
             <Route exact path='/trivia' render={({ history }) => <GamePage
+              history={history}
+              getTrivia={this.getTrivia}
+              triviaResults={this.state.triviaResults} />}
+            />
+            <Route exact path='/questions' render={({ history }) => <QuestionList
+              handleCurrentScore={this.handleCurrentScore}
               history={history}
               getTrivia={this.getTrivia}
               triviaResults={this.state.triviaResults} />}
