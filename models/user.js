@@ -27,10 +27,10 @@ const userSchema = new Schema({
   gamesPlayed: {
     type: Number
   },
-  correctAnswers: {
+  totalCorrect: {
     type: Number
   },
-  incorrectAnswers: {
+  totalIncorrect: {
     type: Number
   }
 }, {

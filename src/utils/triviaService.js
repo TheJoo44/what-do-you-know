@@ -6,7 +6,7 @@ const shuffle = (arr) => {
 export function shuffleAnswers(shuffled) {
   shuffled.results.forEach(result => {
     let answers = [...result.incorrect_answers, result.correct_answer]
-    result.answers = answers > 3 ? ["True", "False"] : shuffle(answers)
+    result.answers = answers.length > 3 ? shuffle(answers) : ["True", "False"]
   })
   return shuffled;
 }

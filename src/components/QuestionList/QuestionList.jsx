@@ -9,7 +9,7 @@ class QuestionList extends Component {
     this.state = {
       checked: {},
       questions: [],
-      correctAnswers: {}
+      correctAnswers: {},
     }
   }
 
@@ -23,16 +23,18 @@ class QuestionList extends Component {
   }
 
   handleSubmit = (e) => {
+    e.preventDefault();
     let correct = 0;
+    let totalGames = this.props.totalGames;
+    let totalCorrect = this.props.totalCorrect
     for (let key in this.state.checked) {
-      console.log(this.state.checked[key])
-      console.log(this.state.correctAnswers[key])
       if (this.state.checked[key] === this.state.correctAnswers[key]) {
         correct++
-        console.log("correct:", correct)
       }
     }
-    this.props.handleCurrentScore()
+    totalGames++
+    totalCorrect = totalCorrect += correct
+    this.props.handleCurrentScore(correct, totalGames, totalCorrect, this.state.questions, this.state.checked)
   }
 
   async componentDidMount() {
@@ -66,7 +68,6 @@ class QuestionList extends Component {
               <form>
                 {choices}
               </form>
-
               <br />
               <br />
             </div >

@@ -8,6 +8,7 @@ import LoginPage from '../../pages/LoginPage/LoginPage';
 import AboutPage from '../../pages/AboutPage/AboutPage';
 import GamePage from '../../pages/GamePage/GamePage';
 import QuestionList from '../../components/QuestionList/QuestionList';
+import Score from '../../components/Score/Score';
 import userService from '../../utils/userService';
 import * as triviaAPI from '../../utils/triviaAPI';
 
@@ -18,8 +19,11 @@ class App extends Component {
       currentScore: 0,
       totalCorrect: 0,
       totalIncorrect: 0,
-      gamesPlayed: 0,
+      totalGames: 0,
       triviaResults: [],
+      userAnswers: [],
+      answers: [],
+      questions: [],
       user: userService.getUser()
     }
   };
@@ -35,7 +39,14 @@ class App extends Component {
     });
   }
 
-  handleCurrentScore = () => {
+  handleCurrentScore = (correct, totalGames, totalCorrect, questions, checked) => {
+    this.setState({
+      currentScore: correct,
+      userAnswers: checked,
+      questions: questions,
+      totalGames: totalGames,
+      totalCorrect: totalCorrect
+    })
     this.props.history.push('/scores')
   }
 
@@ -51,9 +62,11 @@ class App extends Component {
           <nav>
             {userService.getUser() ?
               <div className="nav-wrapper">
-                <h1 className="brand-logo center"><NavLink exact to='/'>What Do YOU Know?</NavLink></h1>
+                <h1 className="brand-logo center"><NavLink exact to='/trivia'>What Do YOU Know?</NavLink></h1>
                 <div className="left">
-                  {userService.getUser().name ? `Hello, ${userService.getUser().username}` : ''}
+                  <span>{userService.getUser().name ? `Hello, ${userService.getUser().username}` : ''}</span>
+                  <span>{`Total Games Played: ${this.state.totalGames}`}</span>
+                  <span>{`Total Correct Answers: ${this.state.totalCorrect}`}</span>
                 </div>
                 <ul id="nav-mobile" className="right hide-on-med-and-down">
                   <li><NavLink exact to='/about'>ABOUT</NavLink></li>
@@ -84,13 +97,24 @@ class App extends Component {
             <Route exact path='/trivia' render={({ history }) => <GamePage
               history={history}
               getTrivia={this.getTrivia}
-              triviaResults={this.state.triviaResults} />}
+              triviaResults={this.state.triviaResults}
+              user={this.state.user} />}
             />
             <Route exact path='/questions' render={({ history }) => <QuestionList
               handleCurrentScore={this.handleCurrentScore}
               history={history}
               getTrivia={this.getTrivia}
-              triviaResults={this.state.triviaResults} />}
+              triviaResults={this.state.triviaResults}
+              totalGames={this.state.totalGames}
+              totalCorrect={this.state.totalCorrect}
+              user={this.state.user} />}
+            />
+            <Route exact path='/scores' render={({ history }) => <Score
+              questions={this.state.questions}
+              score={this.state.currentScore}
+              userAnswers={this.state.userAnswers}
+              history={history}
+              user={this.state.user} />}
             />
           </Switch>
         </main>
@@ -98,5 +122,4 @@ class App extends Component {
     );
   }
 }
-
 export default App;
