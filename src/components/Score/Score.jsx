@@ -9,8 +9,8 @@ function Score({ score, questions, userAnswers }) {
     return (
       <div key={questionIdx}>
         <h3 dangerouslySetInnerHTML={{ __html: `Question: ${question.question}` }}></h3>
-        <h3 dangerouslySetInnerHTML={{ __html: `Correct Answers: ${question.correct_answer}` }}></h3>
-        <h3 dangerouslySetInnerHTML={{ __html: `Your Answers: ${userAnswers[userAnswersKey]}` }}></h3>
+        <h4 dangerouslySetInnerHTML={{ __html: `Correct Answer: ${question.correct_answer}` }}></h4>
+        <h4 dangerouslySetInnerHTML={{ __html: `Your Answer: ${userAnswers[userAnswersKey]}` }}></h4>
         <br />
         <br />
       </div >

@@ -24,9 +24,10 @@ class QuestionList extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    console.log('+++++++++++++++++++++++')
     let correct = 0;
     let totalGames = this.props.totalGames;
-    let totalCorrect = this.props.totalCorrect
+    let totalCorrect = this.props.totalCorrect;
     for (let key in this.state.checked) {
       if (this.state.checked[key] === this.state.correctAnswers[key]) {
         correct++

@@ -24,14 +24,17 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
-  gamesPlayed: {
-    type: Number
+  totalGames: {
+    type: Number,
+    default: 0
   },
   totalCorrect: {
-    type: Number
+    type: Number,
+    default: 0
   },
   totalIncorrect: {
-    type: Number
+    type: Number,
+    default: 0
   }
 }, {
   timestamp: true

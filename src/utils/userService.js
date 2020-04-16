@@ -39,9 +39,22 @@ function login(creds) {
     .then(({ token }) => tokenService.setToken(token));
 }
 
+function saveResults(savedResults) {
+  console.log('TOKEN: ', tokenService.getToken())
+  return fetch(`${BASE_URL}/results`, {
+    method: 'POST',
+    headers: {
+      'Content-type': 'application/json',
+      'Authorization': `Bearer ${tokenService.getToken()}`
+    },
+    body: JSON.stringify(savedResults)
+  }).then(res => res.json());
+}
+
 export default {
   signup,
   getUser,
   logout,
-  login
+  login,
+  saveResults
 };

@@ -4,11 +4,12 @@ const SECRET = process.env.SECRET;
 module.exports = function (req, res, next) {
   // Check for the token being sent in three different ways
   let token = req.get('Authorization') || req.query.token || req.body.token;
+  console.log("AUTH TOKEN: ", token)
   if (token) {
     // Remove 'Bearer" if it was included in the token header
-    token = token.replace('Bearer', '');
+    token = token.replace('Bearer ', '');
     // Check if token is valid and not expired
-    jwt.verifu(token, SECRET, function (err, decoded) {
+    jwt.verify(token, SECRET, function (err, decoded) {
       if (err) {
         next(err);
       } else {

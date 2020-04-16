@@ -34,18 +34,29 @@ class App extends Component {
   }
 
   handleSignupOrLogin = () => {
+    const user = userService.getUser()
     this.setState({
-      user: userService.getUser()
+      user,
+      totalGames: user.totalGames,
+      totalCorrect: user.totalCorrect
     });
   }
 
-  handleCurrentScore = (correct, totalGames, totalCorrect, questions, checked) => {
+  handleCurrentScore = async (correct, totalGames, totalCorrect, questions, checked) => {
+    console.log('=================')
+    let results = {
+      totalGames: totalGames,
+      totalCorrect: totalCorrect
+    }
+    console.log("results: ", results)
+    let savedResults = await userService.saveResults(results)
+    console.log("SavedResults: ", savedResults)
     this.setState({
       currentScore: correct,
       userAnswers: checked,
       questions: questions,
-      totalGames: totalGames,
-      totalCorrect: totalCorrect
+      totalGames: savedResults.totalGames,
+      totalCorrect: savedResults.totalCorrect
     })
     this.props.history.push('/scores')
   }
@@ -54,6 +65,8 @@ class App extends Component {
     const triviaResults = await triviaAPI.getTrivia(formData)
     return (triviaResults)
   }
+
+
 
   render() {
     return (
