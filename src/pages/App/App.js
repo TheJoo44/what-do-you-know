@@ -81,7 +81,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App deep-orange darken-3 main-app">
+      <div className="App main-app">
         <header>
           <nav className="deep-orange lighten-1">
             {userService.getUser() ?
@@ -134,7 +134,7 @@ class App extends Component {
               user={this.state.user} />}
             />
             <Route exact path='/scores' render={({ history }) => <Score
-              questions={this.state.questions}
+              questions={this.state.triviaResults}
               score={this.state.currentScore}
               userAnswers={this.state.userAnswers}
               history={history}

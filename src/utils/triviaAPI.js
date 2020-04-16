@@ -8,10 +8,7 @@ export function getTrivia(formData) {
     case formData.category !== "":
       queryParams += `&category=${formData.category}`
       break;
-
   }
-  console.log("queryParams: ", queryParams)
-  console.log("TriviaAPI1", formData)
   return fetch(`${BASE_URL}${queryParams}`)
     .then(res => res.json());
 }
