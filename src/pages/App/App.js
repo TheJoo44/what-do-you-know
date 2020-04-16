@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch, Redirect, NavLink } from 'react-router-dom';
+import { Route, Switch, NavLink } from 'react-router-dom';
 import './App.css';
 import 'semantic-ui-css/semantic.min.css'
 import HomePage from '../../pages/HomePage/HomePage';
@@ -81,19 +81,16 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="App deep-orange darken-3 main-app">
         <header>
-          <nav>
+          <nav className="deep-orange lighten-1">
             {userService.getUser() ?
               <div className="nav-wrapper">
                 <h1 className="brand-logo center"><NavLink exact to='/trivia'>What Do YOU Know?</NavLink></h1>
-                <div className="left">
+                <div className="left username">
                   <span>{userService.getUser().name ? `Hello, ${userService.getUser().username}` : ''}</span>
-                  <span>{`Total Games Played: ${this.state.totalGames}`}</span>
-                  <span>{`Total Correct Answers: ${this.state.totalCorrect}`}</span>
-                  <span>{`Total Incorrect Answers: ${this.state.totalIncorrect}`}</span>
                 </div>
-                <ul id="nav-mobile" className="right hide-on-med-and-down">
+                <ul id="nav-mobile" className="right">
                   <li><NavLink exact to='/about'>ABOUT</NavLink></li>
                   <li><NavLink exact to='/logout' onClick={this.handleLogout}>LOGOUT</NavLink></li>
                 </ul>
@@ -101,7 +98,7 @@ class App extends Component {
               :
               <div className="nav-wrapper">
                 <h1 className="brand-logo center"><NavLink exact to='/'>What Do YOU Know?</NavLink></h1>
-                <ul id="nav-mobile" className="right hide-on-med-and-down">
+                <ul id="nav-mobile" className="right">
                   <li><NavLink exact to='/signup'>SIGNUP</NavLink></li>
                   <li><NavLink exact to='/login'>LOGIN</NavLink></li>
                   <li><NavLink exact to='/about'>ABOUT</NavLink></li>
@@ -130,7 +127,6 @@ class App extends Component {
               handleCurrentScore={this.handleCurrentScore}
               history={history}
               correctAnswers={this.state.correctAnswers}
-              // getTrivia={this.getTrivia}
               triviaResults={this.state.triviaResults}
               totalGames={this.state.totalGames}
               totalCorrect={this.state.totalCorrect}
@@ -146,7 +142,14 @@ class App extends Component {
             />
           </Switch>
         </main>
-      </div>
+        <footer className="page-footer footer deep-orange lighten-1">
+          <div className="container center footer-text">
+            <span>Total Games Played: {this.state.totalGames}</span>
+            <span>Total Correct Answers: {this.state.totalCorrect}</span>
+            <span>Total Incorrect Answers: {this.state.totalIncorrect}</span>
+          </div>
+        </footer>
+      </div >
     );
   }
 }

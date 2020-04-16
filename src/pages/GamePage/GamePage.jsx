@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import TriviaSelectionForm from '../../components/TriviaSelectionForm/TriviaSelectionForm'
-import * as triviaAPI from '../../utils/triviaAPI'
-import QuestionList from '../../components/QuestionList/QuestionList'
 
 class GamePage extends Component {
   constructor(props) {
@@ -24,7 +22,7 @@ class GamePage extends Component {
   render() {
     return (
       <div className="GamePage">
-        <h1>Play Some Trivia</h1>
+        <h1>Let's Play Some Trivia</h1>
         <TriviaSelectionForm
           getNumQuestions={this.state.numQuestions}
           getCategory={this.state.category}

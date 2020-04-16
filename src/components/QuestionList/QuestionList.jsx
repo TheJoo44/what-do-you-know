@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { Link } from 'react-router-dom';
-import * as triviaService from '../../utils/triviaService';
+import './QuestionList.css'
 
 
 class QuestionList extends Component {
@@ -54,7 +53,7 @@ class QuestionList extends Component {
 
   render() {
     return (
-      <div>
+      <div className="question-list">
         <h1>Questions</h1>
         {this.props.triviaResults ? this.props.triviaResults.map((question, questionIdx) => {
           const choices = question.answers.map((choice, idx) => {

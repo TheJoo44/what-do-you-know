@@ -1,5 +1,29 @@
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  padding: 0;
+}
+
+.footer-text {
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  height: 100%;
+}
+
+.username {
+  padding: 0 0 0 50px;
+  font-size: 1.5rem;
+}
+
+.main-app {
+  height: 100%;
+}
+
 .App {
   text-align: center;
+  height: 100vH;
 }
 
 .App-logo {
@@ -25,3 +49,4 @@
     transform: rotate(360deg);
   }
 }
+
