@@ -10,6 +10,7 @@ import GamePage from '../../pages/GamePage/GamePage';
 import QuestionList from '../../components/QuestionList/QuestionList';
 import Score from '../../components/Score/Score';
 import userService from '../../utils/userService';
+import * as triviaService from '../../utils/triviaService';
 import * as triviaAPI from '../../utils/triviaAPI';
 
 class App extends Component {
@@ -24,6 +25,7 @@ class App extends Component {
       userAnswers: [],
       answers: [],
       questions: [],
+      correctAnswers: {},
       user: userService.getUser()
     }
   };
@@ -38,35 +40,44 @@ class App extends Component {
     this.setState({
       user,
       totalGames: user.totalGames,
-      totalCorrect: user.totalCorrect
+      totalCorrect: user.totalCorrect,
+      totalIncorrect: user.totalIncorrect
     });
   }
 
-  handleCurrentScore = async (correct, totalGames, totalCorrect, questions, checked) => {
-    console.log('=================')
+  handleCurrentScore = async (correct, totalGames, totalCorrect, totalIncorrect, questions, checked) => {
     let results = {
       totalGames: totalGames,
-      totalCorrect: totalCorrect
+      totalCorrect: totalCorrect,
+      totalIncorrect: totalIncorrect
     }
-    console.log("results: ", results)
     let savedResults = await userService.saveResults(results)
-    console.log("SavedResults: ", savedResults)
     this.setState({
       currentScore: correct,
       userAnswers: checked,
       questions: questions,
       totalGames: savedResults.totalGames,
-      totalCorrect: savedResults.totalCorrect
+      totalCorrect: savedResults.totalCorrect,
+      totalIncorrect: savedResults.totalIncorrect
     })
     this.props.history.push('/scores')
   }
 
   getTrivia = async (formData) => {
+    console.log("FORM DATA", formData)
     const triviaResults = await triviaAPI.getTrivia(formData)
-    return (triviaResults)
+    const results = triviaService.shuffleAnswers(triviaResults)
+    const correctAnswers = triviaService.correctAnswers(triviaResults)
+    this.setState({ triviaResults: results.results, correctAnswers })
   }
 
-
+  // handleSettings = () => {
+  //   this.setState({
+  //     numQuestions: this.state.numQuestions,
+  //     category: this.state.category,
+  //     difficulty: this.state.difficulty
+  //   })
+  // }
 
   render() {
     return (
@@ -80,6 +91,7 @@ class App extends Component {
                   <span>{userService.getUser().name ? `Hello, ${userService.getUser().username}` : ''}</span>
                   <span>{`Total Games Played: ${this.state.totalGames}`}</span>
                   <span>{`Total Correct Answers: ${this.state.totalCorrect}`}</span>
+                  <span>{`Total Incorrect Answers: ${this.state.totalIncorrect}`}</span>
                 </div>
                 <ul id="nav-mobile" className="right hide-on-med-and-down">
                   <li><NavLink exact to='/about'>ABOUT</NavLink></li>
@@ -111,15 +123,18 @@ class App extends Component {
               history={history}
               getTrivia={this.getTrivia}
               triviaResults={this.state.triviaResults}
+              handleSettings={this.handleSettings}
               user={this.state.user} />}
             />
             <Route exact path='/questions' render={({ history }) => <QuestionList
               handleCurrentScore={this.handleCurrentScore}
               history={history}
-              getTrivia={this.getTrivia}
+              correctAnswers={this.state.correctAnswers}
+              // getTrivia={this.getTrivia}
               triviaResults={this.state.triviaResults}
               totalGames={this.state.totalGames}
               totalCorrect={this.state.totalCorrect}
+              totalIncorrect={this.state.totalIncorrect}
               user={this.state.user} />}
             />
             <Route exact path='/scores' render={({ history }) => <Score

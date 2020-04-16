@@ -24,35 +24,39 @@ class QuestionList extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log('+++++++++++++++++++++++')
     let correct = 0;
+    let incorrect = 0;
     let totalGames = this.props.totalGames;
     let totalCorrect = this.props.totalCorrect;
+    let totalIncorrect = this.props.totalIncorrect;
     for (let key in this.state.checked) {
-      if (this.state.checked[key] === this.state.correctAnswers[key]) {
+      if (this.state.checked[key] === this.props.correctAnswers[key]) {
         correct++
+      } else {
+        incorrect++
       }
     }
     totalGames++
     totalCorrect = totalCorrect += correct
-    this.props.handleCurrentScore(correct, totalGames, totalCorrect, this.state.questions, this.state.checked)
+    totalIncorrect = totalIncorrect += incorrect
+    this.props.handleCurrentScore(correct, totalGames, totalCorrect, totalIncorrect, this.state.questions, this.state.checked)
   }
 
-  async componentDidMount() {
-    let result = await this.props.getTrivia();
-    triviaService.shuffleAnswers(result)
-    const correctAnswers = triviaService.correctAnswers(result)
-    this.setState({
-      questions: result.results,
-      correctAnswers
-    })
-  }
+  // async componentDidMount(formData) {
+  //   // let result = await this.props.getTrivia(formData);
+  //   // triviaService.shuffleAnswers(result)
+  //   // const correctAnswers = triviaService.correctAnswers(result)
+  //   // this.setState({
+  //     // questions: result.results,
+  //     correctAnswers
+  //   })
+  // }
 
   render() {
     return (
       <div>
         <h1>Questions</h1>
-        {this.state.questions ? this.state.questions.map((question, questionIdx) => {
+        {this.props.triviaResults ? this.props.triviaResults.map((question, questionIdx) => {
           const choices = question.answers.map((choice, idx) => {
             return (
               <p key={idx}><label>

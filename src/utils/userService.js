@@ -40,7 +40,6 @@ function login(creds) {
 }
 
 function saveResults(savedResults) {
-  console.log('TOKEN: ', tokenService.getToken())
   return fetch(`${BASE_URL}/results`, {
     method: 'POST',
     headers: {

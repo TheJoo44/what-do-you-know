@@ -16,13 +16,14 @@ What do you know? Put your general knowledge to the test to see how much you rea
 ---
 
 ## Getting Started
-Link to app
+[Link to What Do You Know](https://triviawhatdoyouknow.herokuapp.com/)
 
 [Link to Trello](https://trello.com/b/YQ9poumC/project-4)
 ---
 
 ## Next Steps
 ---
+Build a top scores page
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

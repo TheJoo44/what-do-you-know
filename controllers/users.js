@@ -37,14 +37,12 @@ async function login(req, res) {
 }
 
 async function results(req, res) {
-  console.log("Body: ", req.body, req.user)
   try {
     const user = await User.findById(req.user._id)
-    console.log("user: ", user)
     user.totalGames = req.body.totalGames
     user.totalCorrect = req.body.totalCorrect
+    user.totalIncorrect = req.body.totalIncorrect
     user.save();
-    console.log("user2: ", user)
     res.json(user)
   } catch (err) {
     return res.status(401).json(err);
