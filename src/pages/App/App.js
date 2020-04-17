@@ -75,7 +75,7 @@ class App extends Component {
     return (
       <div className="App main-app">
         <header>
-          <nav className="deep-orange lighten-1">
+          <nav className="app-header deep-orange lighten-1">
             {userService.getUser() ?
               <div className="nav-wrapper">
                 <h1 className="brand-logo center"><NavLink exact to='/trivia'>What Do YOU Know?</NavLink></h1>

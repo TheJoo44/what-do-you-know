@@ -4,6 +4,15 @@
   width: 100vw;
   padding: 0;
   height: 4vh;
+  z-index: 5;
+}
+
+.app-header {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  padding: 0;
+  z-index: 5;
 }
 
 .footer-text {

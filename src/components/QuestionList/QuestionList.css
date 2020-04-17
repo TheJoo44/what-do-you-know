@@ -4,6 +4,10 @@
   padding-bottom: 20px;
 }
 
+.question-list {
+  margin-top: 50px;
+}
+
 .ques-category {
   font-size: 1.25rem;
   margin-top: -10px;
@@ -11,7 +15,7 @@
 }
 
 .line {
-  width: 50%;
+  width: 100%;
 }
 
 .ques-question {
@@ -24,6 +28,5 @@
 }
 
 .ques-submit-btn {
-  margin-top: -30px;
-  margin-bottom: 50px;
+  margin-bottom: 70px;
 }

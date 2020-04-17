@@ -45,7 +45,7 @@ function Score({ score, questions, userAnswers }) {
     )
   })
   return (
-    <div className="container" >
+    <div className="container scorebox" >
       <div className="row">
         <h1 className="score-title ">Thanks For Playing!</h1>
         <h2>You got <span className="score-correct-total" style={score > 5 ? { color: 'green' } : { color: 'red' }}>{score}</span> correct!</h2>

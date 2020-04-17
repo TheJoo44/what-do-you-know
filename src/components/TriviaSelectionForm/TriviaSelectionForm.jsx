@@ -30,7 +30,7 @@ class TriviaSelectionForm extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="container triv-sel-form">
         <h1 className="triv-sel-form-title1">Let's Play Some Trivia</h1>
         <h2 className="triv-sel-form-title2">Make Your Selections</h2>
         <div className="row center">
