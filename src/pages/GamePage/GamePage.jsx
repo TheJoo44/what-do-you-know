@@ -22,7 +22,6 @@ class GamePage extends Component {
   render() {
     return (
       <div className="GamePage">
-        <h1>Let's Play Some Trivia</h1>
         <TriviaSelectionForm
           getNumQuestions={this.state.numQuestions}
           getCategory={this.state.category}

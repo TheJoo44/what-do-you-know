@@ -71,14 +71,6 @@ class App extends Component {
     this.setState({ triviaResults: results.results, correctAnswers })
   }
 
-  // handleSettings = () => {
-  //   this.setState({
-  //     numQuestions: this.state.numQuestions,
-  //     category: this.state.category,
-  //     difficulty: this.state.difficulty
-  //   })
-  // }
-
   render() {
     return (
       <div className="App main-app">

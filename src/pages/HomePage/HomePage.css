@@ -1,0 +1,19 @@
+.home-title {
+  font-size: 3rem;
+  padding: 10px;
+}
+
+.home-logo {
+  width: 30vw;
+  border-radius: 50%;
+}
+
+.home-text1 {
+  font-size: 2rem;
+  padding: 20px 0 0 0;
+}
+
+.home-text2 {
+  font-size: 2rem;
+  padding: 0 0 20px 0;
+}

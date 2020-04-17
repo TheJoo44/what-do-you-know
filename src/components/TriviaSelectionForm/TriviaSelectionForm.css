@@ -2,5 +2,24 @@
   padding: 3px 0 3px 5px !important;
   width: 99% !important;
   height: 99% !important;
-  
+}
+
+.triv-sel-form-title1 {
+  padding: 40px 0 30px 0;
+  font-size: 4rem;
+}
+
+.triv-sel-form-title2 {
+  margin: 20px 0 50px 0;
+  font-size: 3rem;
+}
+
+.triv-sel-form-label {
+  font-size: 1.5rem;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.clarify {
+  font-size: .75rem;
 }

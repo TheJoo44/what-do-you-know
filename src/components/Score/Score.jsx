@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from 'react-router-dom';
 
 
 function Score({ score, questions, userAnswers }) {
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   const correct = questions.map((question, questionIdx) => {
     const userAnswersKey = `checked-${questionIdx}`
 

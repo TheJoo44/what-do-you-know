@@ -5,3 +5,8 @@
   align-items: center;
   margin-bottom: 50px;
 }
+
+.login-form-title {
+  font-size: 2rem;
+  margin: 20px;
+}

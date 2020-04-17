@@ -3,6 +3,7 @@
   bottom: 0;
   width: 100vw;
   padding: 0;
+  height: 4vh;
 }
 
 .footer-text {
@@ -10,6 +11,8 @@
   justify-content: space-around;
   align-content: center;
   height: 100%;
+  font-size: 1.75rem;
+  padding: 8px 0 0 0;
 }
 
 .username {
