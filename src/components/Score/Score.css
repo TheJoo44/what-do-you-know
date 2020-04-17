@@ -1,25 +1,23 @@
-.ques-title {
+.score-title {
   font-size: 3rem;
   padding-top: 20px;
   padding-bottom: 20px;
-}
-
-.ques-category {
-  font-size: 1.25rem;
-  margin-top: -10px;
-  margin-bottom: -20px;
 }
 
 .line {
   width: 50%;
 }
 
-.ques-question {
+.score-question {
   margin-top: -10px;
   font-size: 1.75rem;
 }
 
-.ques-answers {
+.score-answer {
+  color: black;
+}
+
+.score-useranswer {
   color: black;
 }
 

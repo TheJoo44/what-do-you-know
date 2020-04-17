@@ -41,44 +41,35 @@ class QuestionList extends Component {
     this.props.handleCurrentScore(correct, totalGames, totalCorrect, totalIncorrect, this.state.questions, this.state.checked)
   }
 
-  // async componentDidMount(formData) {
-  //   // let result = await this.props.getTrivia(formData);
-  //   // triviaService.shuffleAnswers(result)
-  //   // const correctAnswers = triviaService.correctAnswers(result)
-  //   // this.setState({
-  //     // questions: result.results,
-  //     correctAnswers
-  //   })
-  // }
-
   render() {
     return (
       <div className="question-list">
-        <h1>Questions</h1>
+        <h1 className="ques-title">Good Luck</h1>
         {this.props.triviaResults ? this.props.triviaResults.map((question, questionIdx) => {
           const choices = question.answers.map((choice, idx) => {
             return (
               <p key={idx}><label>
                 <input type="radio" name={`checked-${questionIdx}`} value={choice} onChange={this.handleChange} className="with-gap" />
-                <span dangerouslySetInnerHTML={{ __html: `${choice}` }}></span>
+                <span className="ques-answers" dangerouslySetInnerHTML={{ __html: `${choice}` }}></span>
               </label></p>
             )
           })
           return (
             <div key={questionIdx}>
-              <h3 dangerouslySetInnerHTML={{ __html: `Category: ${question.category}` }}></h3>
-              <h5 dangerouslySetInnerHTML={{ __html: `Difficulty: ${question.difficulty}` }}></h5>
-              <h3 dangerouslySetInnerHTML={{ __html: `${question.question}` }}></h3>
+              <h3 className="ques-category" dangerouslySetInnerHTML={{ __html: `Category: ${question.category}` }}></h3>
+              <h5 className="ques-difficulty" dangerouslySetInnerHTML={{ __html: `Difficulty: ${question.difficulty}` }}></h5>
+              <h3 className="ques-question" dangerouslySetInnerHTML={{ __html: `${question.question}` }}></h3>
               <form>
                 {choices}
               </form>
+              <hr className="line"></hr>
               <br />
               <br />
             </div >
           )
         })
           : null}
-        <button type="submit" onClick={this.handleSubmit} className="btn btn-default">Submit Answers</button>
+        <button type="submit" onClick={this.handleSubmit} className="btn btn-default waves-effect waves-light blue accent-2 ques-submit-btn">Submit Answers</button>
       </div >
     )
 
