@@ -2,10 +2,19 @@
   font-size: 3rem;
   padding-top: 20px;
   padding-bottom: 20px;
+  letter-spacing: .25rem;
+}
+
+.score-correct-total {
+  font-size: 2rem;
+  margin-top: -10px;
+  margin-bottom: 50px;;
 }
 
 .line {
-  width: 50%;
+  width: 100%;
+  border: double 2px black;
+  margin-top: 50px;
 }
 
 .score-question {
@@ -13,15 +22,22 @@
   font-size: 1.75rem;
 }
 
-.score-answer {
-  color: black;
+.answer-prompt {
+  font-size: 1.5rem;
 }
 
-.score-useranswer {
-  color: black;
+.score-correct {
+  color: green;
+  font-size: 2rem;
 }
 
-.ques-submit-btn {
-  margin-top: -30px;
-  margin-bottom: 50px;
+.score-incorrect {
+  color: red;
+  font-size: 2rem;
 }
+
+
+/* .ques-submit-btn { */
+  /* margin-top: -10px; */
+  /* margin-bottom: 50px; */
+/* } */

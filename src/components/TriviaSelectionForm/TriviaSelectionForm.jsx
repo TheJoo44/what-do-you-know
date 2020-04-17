@@ -37,11 +37,11 @@ class TriviaSelectionForm extends Component {
           <div className="col s6 offset-s3">
             <Form onSubmit={this.handleSubmit}>
               <Form.Field>
-                <label htmlFor="numQuestions"><p className="triv-sel-form-label">Select the Number of Questions<span className="clarify">(10-50)</span></p></label>
+                <label htmlFor="numQuestions"><p className="triv-sel-form-label">Select The Number Of Questions <span className="clarify">(10-50)</span></p></label>
                 <input className="num-questions" type="number" min="10" max="50" name="numQuestions" value={this.state.numQuestions} onChange={this.handleChange} />
               </Form.Field>
               <Form.Field>
-                <label htmlFor="category"><p className="triv-sel-form-label">Choose A Category<span className="clarify">(Select Any for All Categories)</span></p></label>
+                <label htmlFor="category"><p className="triv-sel-form-label">Choose A Category <span className="clarify">(Select Any for All Categories)</span></p></label>
                 <select id="categories" name="category" value={this.state.category} onChange={this.handleChange}>
                   <option value="any" default>Any Category</option>
                   <option value="9" default>General Knowledge</option>
@@ -71,7 +71,7 @@ class TriviaSelectionForm extends Component {
                 </select>
               </Form.Field>
               <Form.Field>
-                <label htmlFor="difficulty"><p className="triv-sel-form-label">Choose A Difficulty<span className="clarify">(Select Any for All Difficulties)</span></p></label>
+                <label htmlFor="difficulty"><p className="triv-sel-form-label">Choose A Difficulty <span className="clarify">(Select Any for All Difficulties)</span></p></label>
                 <select id="difficulty" name="difficulty" value={this.state.difficulty} onChange={this.handleChange}>
                   <option value="any" default>Any</option>
                   <option value="easy">Easy</option>

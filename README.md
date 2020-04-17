@@ -17,6 +17,11 @@
 #### Options Page
 ![SeletionPage](public/images/selectionpage.png)
 
+#### Trivia Page
+![TriviaPage](public/images/triviapage.png)
+
+#### Results Page
+![ResultsPage](public/images/resultspage.png)
 
 
 ## Technology Used
