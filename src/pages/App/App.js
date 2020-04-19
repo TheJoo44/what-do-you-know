@@ -83,6 +83,8 @@ class App extends Component {
                   <span>{userService.getUser().name ? `Hello, ${userService.getUser().username}` : ''}</span>
                 </div>
                 <ul id="nav-mobile" className="right">
+                  <li><NavLink exact to='/'>HOME</NavLink></li>
+                  <li><NavLink exact to='/trivia'>PLAY</NavLink></li>
                   <li><NavLink exact to='/about'>ABOUT</NavLink></li>
                   <li><NavLink exact to='/logout' onClick={this.handleLogout}>LOGOUT</NavLink></li>
                 </ul>
@@ -107,6 +109,8 @@ class App extends Component {
             <Route exact path='/signup' render={({ history }) => <SignupPage history={history} handleSignupOrLogin={this.handleSignupOrLogin} />} />
             <Route exact path='/login' render={({ history }) => <LoginPage history={history} handleSignupOrLogin={this.handleSignupOrLogin} />} />
             <Route exact path='/about' render={({ history }) => <AboutPage history={history} />}
+            />
+            <Route exact path='/' render={({ history }) => <HomePage history={history} />}
             />
             <Route exact path='/trivia' render={({ history }) => <GamePage
               history={history}
@@ -134,13 +138,20 @@ class App extends Component {
             />
           </Switch>
         </main>
-        <footer className="page-footer footer deep-orange lighten-1">
-          <div className="container center footer-text">
-            <span>Total Games Played: {this.state.totalGames}</span>
-            <span>Total Correct Answers: {this.state.totalCorrect}</span>
-            <span>Total Incorrect Answers: {this.state.totalIncorrect}</span>
-          </div>
-        </footer>
+        {userService.getUser() ?
+          <footer className="page-footer footer deep-orange lighten-1">
+            <div className="container center footer-text">
+              <span>Total Games Played: {this.state.totalGames}</span>
+              <span>Total Correct Answers: {this.state.totalCorrect}</span>
+              <span>Total Incorrect Answers: {this.state.totalIncorrect}</span>
+            </div>
+          </footer>
+          :
+          <footer className="page-footer footer deep-orange lighten-1">
+            <div className="container center footer-text">
+            </div>
+          </footer>
+        }
       </div >
     );
   }

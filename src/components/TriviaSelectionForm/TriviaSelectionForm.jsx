@@ -14,10 +14,6 @@ class TriviaSelectionForm extends Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    // getNumQuestions = { this.state.numQuestions }
-    // getCategory = { this.state.category }
-    // getDifficulty = { this.state.difficulty }
-    console.log("State:", this.state)
     this.props.getTrivia(this.state)
     this.props.history.push('/questions')
   }
