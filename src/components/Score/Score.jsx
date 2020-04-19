@@ -48,7 +48,7 @@ function Score({ score, questions, userAnswers }) {
     <div className="container scorebox" >
       <div className="row">
         <h1 className="score-title ">Thanks For Playing!</h1>
-        <h2>You got <span className="score-correct-total" style={score > 5 ? { color: 'green' } : { color: 'red' }}>{score}</span> correct!</h2>
+        <h2>You got <span className="score-correct-total" style={score > (questions.length / 2) ? { color: 'green' } : { color: 'red' }}>{score}</span> correct!</h2>
         <h3 className="score-answers">{correct}</h3>
         <Link to="/trivia"><button className="btn btn-default waves-effect waves-light blue accent-2 ques-submit-btn">Play Again?</button></Link>
       </div>
